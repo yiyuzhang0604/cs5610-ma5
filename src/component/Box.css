@@ -1,0 +1,14 @@
+#box{
+    width: 100px; 
+    height: 100px; 
+    border: 1px solid grey; 
+    
+}
+
+.white{
+    background-color: white;
+}
+
+.black{
+    background-color: black;
+}

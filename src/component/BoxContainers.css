@@ -1,0 +1,16 @@
+#BoxContainers{
+    display: grid; 
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(2, 100px);
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.Count{
+    font-size: 32px; 
+    text-align: center;
+    font-weight: 500; 
+
+}
