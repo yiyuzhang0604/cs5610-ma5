@@ -1,5 +1,5 @@
 import React, { useDebugValue, useState } from 'react'; 
-import {useDispatch} from "react-redux"; 
+
 
 import './Box.css'; 
 
@@ -12,20 +12,24 @@ export default function Box(props) {
         bgColor = "black"; 
     }
 
-    
-    // function that passes action to store/reducer 
-    const dispatch = useDispatch(); 
-    return (
-        <div onClick={() => dispatch({
-                            // action 
-                            type: "click", 
-                            x: props.x, 
-                            y: props.y,
-                            })}
-                            id="box"
-                            class={bgColor}>
 
-                            </div>
+    return (
+        <div onClick={() => {
+                            const {boxContainer, onClick, x, y} = props;
+                            if (symbol === "Y") {
+                                boxContainer[x][y] = "N"; 
+                            }else {
+                                boxContainer[x][y] = "Y"; 
+                            }
+                            // invoke parent's onClick function => setBoxContainer
+                            onClick([...boxContainer]);
+        }
+        }
+        id="box"
+        class={bgColor}
+        >
+        
+        </div>
     ); 
 }
 

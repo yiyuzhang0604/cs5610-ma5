@@ -1,14 +1,19 @@
 
 import Box from './Box'; 
 import './BoxContainers.css'; 
-import {useSelector} from "react-redux"; 
+import {useState} from 'react'; 
 
 
 
 // parent class 
 function BoxContainers() {
-    const clickCount = useSelector((state) => state.clickCount); 
-    const boxContainer = useSelector((state) => state.game); 
+    const[boxContainer, setBoxContainer] = useState([
+        // initial 2 x 2 grid 
+        ["",""],
+        ["",""],
+    ]); 
+
+
 
     const container = []; 
     let count = 0; 
@@ -16,7 +21,13 @@ function BoxContainers() {
     for (let i = 0; i < boxContainer.length; i++) {
         let row = boxContainer[i]; 
         for (let j = 0; j < row.length; j++) {
-            container.push(<Box symbol={boxContainer[i][j]} x = {i} y = {j}/>); 
+            // pass in props to child class
+            container.push(<Box symbol={boxContainer[i][j]} 
+                                onClick={setBoxContainer}
+                                boxContainer={boxContainer}
+                                x={i}
+                                y={j}
+                                />); 
             // if [i][j] == 1, means it's selected
             if (boxContainer[i][j] == "Y") {
                 count++; 
